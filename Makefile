@@ -1,3 +1,5 @@
+$(shell docker network create enmarche 1>/dev/null 2>&1 || true)
+
 FIG=docker-compose
 RUN=$(FIG) run --rm app
 EXEC=$(FIG) exec app
@@ -52,7 +54,7 @@ db: vendor
 	$(RUN) php -r "for(;;){if(@fsockopen('db',3306)){break;}}" # Wait for MySQL
 	$(RUN) $(CONSOLE) doctrine:database:drop --force --if-exists
 	$(RUN) $(CONSOLE) doctrine:database:create --if-not-exists
-	$(RUN) $(CONSOLE) doctrine:migrations:migrate -n
+	$(RUN) $(CONSOLE) doctrine:schema:create
 	$(RUN) $(CONSOLE) doctrine:fixtures:load -n
 
 db-diff:        ## Generate a migration by comparing your current database to your mapping information

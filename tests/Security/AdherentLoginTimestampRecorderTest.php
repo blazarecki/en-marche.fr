@@ -7,11 +7,15 @@ use AppBundle\Entity\PostAddress;
 use AppBundle\Membership\ActivityPositions;
 use AppBundle\Security\AdherentLoginTimestampRecorder;
 use Doctrine\Common\Persistence\ObjectManager;
+use HWI\Bundle\OAuthBundle\Security\Core\Authentication\Token\OAuthToken;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 
+/**
+ * @group wip
+ */
 class AdherentLoginTimestampRecorderTest extends TestCase
 {
     public function testRecordLastLoginTimestamp()
@@ -21,7 +25,7 @@ class AdherentLoginTimestampRecorderTest extends TestCase
 
         $adherent = $this->createAdherent();
 
-        $request = Request::create('POST', '/espace-adherent/connexion');
+        $request = Request::create('POST', '/login');
         $token = new UsernamePasswordToken($adherent, $adherent->getPassword(), 'users_db');
 
         $recorder = new AdherentLoginTimestampRecorder($manager);

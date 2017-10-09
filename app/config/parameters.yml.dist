@@ -54,3 +54,11 @@ parameters:
     env(ENABLE_SILENCE_RULE):   'false'
 
     env(SESSION_MAX_IDLE_TIME): 1800
+
+    env(AUTH_CLIENT_ID): ~
+    env(AUTH_CLIENT_SECRET): ~
+    env(AUTH_ACCESS_TOKEN_URL): ~
+    env(AUTH_ACCESS_AUTHORIZATION_URL): ~
+    env(AUTH_LOGIN_URL): ~
+    env(AUTH_REGISTER_URL): ~
+    env(AUTH_INFO_URL): ~
