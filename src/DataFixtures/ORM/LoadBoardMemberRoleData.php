@@ -5,10 +5,9 @@ namespace AppBundle\DataFixtures\ORM;
 use AppBundle\Entity\BoardMember\Role;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\FixtureInterface;
-use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class LoadBoardMemberRoleData extends AbstractFixture implements FixtureInterface, OrderedFixtureInterface
+class LoadBoardMemberRoleData extends AbstractFixture implements FixtureInterface
 {
     const BOARD_MEMBER_ROLES = [
         'BMR01' => 'Adhérent(e)s membre de la société civile',
@@ -35,10 +34,5 @@ class LoadBoardMemberRoleData extends AbstractFixture implements FixtureInterfac
         }
 
         $manager->flush();
-    }
-
-    public function getOrder()
-    {
-        return -2;
     }
 }
